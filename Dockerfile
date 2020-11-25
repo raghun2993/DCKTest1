@@ -1,8 +1,9 @@
 FROM nginx:latest 
 MAINTAINER raghun2993@gmail.com 
-RUN apt install -y curl
 COPY index.html /usr/share/nginx/html/
 COPY scorekeeper.js /usr/share/nginx/html/
 COPY style.css /usr/share/nginx/html/
-#HEALTHCHECK CMD curl --fail http://localhost || exit 1
-CMD ["nginx", "-g", "daemon off;"]
+RUN apt update -y && apt install -y nano tree iputils-ping
+ENTRYPOINT ["ping"]
+CMD ["www.google.com"]
+
